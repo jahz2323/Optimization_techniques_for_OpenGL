@@ -16,7 +16,7 @@ function Vertices_task(gl, vertices_count, shape_pattern) {
     }
 
     const vertexData = [];
-    const squareSize = 0.1;
+    const squareSize = 0.05;
     const numSquares = Math.floor(vertices_count / 6); // 6 vertices per square
     const colors = [
         [1, 0, 0, 0.7], // Red
