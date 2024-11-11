@@ -1,6 +1,24 @@
+let shape_pattern = [
+    [0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,1,0,0,0,0,0,0],
+    [0,0,0,0,0,1,1,1,0,0,0,0,0],
+    [0,0,0,0,1,1,1,1,1,0,0,0,0],
+    [0,0,0,1,1,1,1,1,1,1,0,0,0],
+    [0,0,1,1,1,1,1,1,1,1,1,0,0],
+    [0,1,1,1,1,1,1,1,1,1,1,1,0],
+    [1,1,1,1,1,1,1,1,1,1,1,1,1],
+    [0,1,1,1,1,1,1,1,1,1,1,1,0],
+    [0,0,1,1,1,1,1,1,1,1,1,0,0],
+    [0,0,0,1,1,1,1,1,1,1,0,0,0],
+    [0,0,0,0,1,1,1,1,1,0,0,0,0],
+    [0,0,0,0,0,1,1,1,0,0,0,0,0],
+    [0,0,0,0,0,0,1,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0]
+];
+
 function WebGL(gl) {
     let vertices_count = 10000; // Update to reflect the total number of vertices needed
-    const vertexData = Vertices_task(gl, vertices_count);
+    const vertexData = Vertices_task(gl, vertices_count, shape_pattern);
 
     const buffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, buffer);

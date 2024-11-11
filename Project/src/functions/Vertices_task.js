@@ -2,7 +2,7 @@
  * Create vertices program 10k vertices to draw image
  */
 
-function Vertices_task(gl, vertices_count) {
+function Vertices_task(gl, vertices_count, shape_pattern) {
     function createSquareVertices(x, y, z, size, color) {
         return [
             x, y, z, 1, 0, 0, 1,               // Vertex 1: Bottom-left corner (Red)
@@ -16,42 +16,41 @@ function Vertices_task(gl, vertices_count) {
     }
 
     const vertexData = [];
-    const squareSize = 0.02;
+    const squareSize = 0.1;
     const numSquares = Math.floor(vertices_count / 6); // 6 vertices per square
     const colors = [
         [1, 0, 0, 0.7], // Red
         [0, 0, 1, 0.7]  // Blue
     ];
 
-    const shape_pattern = [
-        [0,1,1,1,1,0],
-        [1,1,1,1,1,1],
-        [0,1,1,1,1,0]
-    ];
-
-
-    let currentX = -0.5;
-    let currentY = -0.5;
+    let currentX = -1;
+    let currentY = -1;
     let currentZ = 0; // Set Z to 0 for 2D rendering
 
     for (let i = 0; i <= numSquares - 1; i++) {
         const color = colors[i % 2]; // Alternate colors
-        vertexData.push(...createSquareVertices(currentX, currentY, currentZ, squareSize, color));
-
-        currentX += squareSize;
-        if (currentX >= 0.5) {
-            currentY += squareSize;
-            currentX = -0.5;
+        // vertexData.push(...createSquareVertices(currentX, currentY, currentZ, squareSize, color));
+        //implement shape pattern
+        for (let j = 0; j < shape_pattern.length; j++) {
+            for (let k = 0; k < shape_pattern[j].length; k++) {
+                if (shape_pattern[j][k] == 1) {
+                    vertexData.push(...createSquareVertices(currentX + (k * squareSize), currentY + (j * squareSize), currentZ, squareSize, color));
+                }
+            }
         }
-        if(currentY >= 0.5) {
-            currentY = -0.5;
-            currentX = -0.5;
-        }
+        // currentX += squareSize;
+        // if (currentX >= 0.5) {
+        //     currentY += squareSize;
+        //     currentX = -0.5;
+        // }
+        // if(currentY >= 0.5) {
+        //     currentY = -0.5;
+        //     currentX = -0.5;
+        // }
     }
 
     // Print vertex data for debugging
     printVertexData(vertexData);
-
     return vertexData;
 }
 function printVertexData(vertexData) {
