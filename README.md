@@ -8,7 +8,7 @@
         <a href="https://docs.google.com/document/d/1RLh-AUVnSXL5UATSLUkmvJOgwc43KIXEKTOwjtlcQiE/edit?usp=sharing"> </a>
         <ol> 
             <li> Familiarize with WebGL and OpenGL API </li>
-            <l1> <s> Draw image with 10k vertices <s></l1>
+            <l1> <s> Draw image with 10k vertices </s>s></l1>
             <li> Gantt chart - </li>
             <li> GPU Fundamentals </li>
             <li> CUDA basics </li>
