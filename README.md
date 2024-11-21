@@ -9,7 +9,7 @@
         <ol> 
             <li> Familiarize with WebGL and OpenGL API </li>
             <l1> <s> Draw image with 10k vertices </s>s></l1>
-            <li> Gantt chart - </li>
+            <li> Gantt chart - Year1 - <s>Year2</s> </li>
             <li> GPU Fundamentals </li>
             <li> CUDA basics </li>
             <li> TensorFlow.js </li> 
