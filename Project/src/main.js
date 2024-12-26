@@ -24,7 +24,8 @@ function main() {
     gl.clearColor(1.0, 0.0, 1.0, 1.0);
     gl.clear(gl.COLOR_BUFFER_BIT);
     //ColourMask(gl,1.0, 0,1.0,1.0);
-    WebGL(gl,vertexShaderSource,fragmentShaderSource);
+    //SingleDraw(gl,vertexShaderSource,fragmentShaderSource);
+    Multi_object_draw(gl,vertexShaderSource,fragmentShaderSource);
 }
 
 const vertexShaderSource = `
