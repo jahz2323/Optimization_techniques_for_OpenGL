@@ -1,12 +1,16 @@
-// Vertex shader program
+
 const vsGSGL = `
     precision mediump float;
+    
     attribute vec3 coordinates;
     attribute vec3 color;
     varying vec3 vColor;
+    
+    uniform mat4 matrix;
+    
     void main(void) {
         vColor = color;
-        gl_Position = vec4(coordinates, 1);
+        gl_Position = matrix*vec4(coordinates, 1);
     }
 `;
 
@@ -84,9 +88,26 @@ function _2DTriangle(gl, canvas) {
 
 
     gl.useProgram(program);
-    gl.drawArrays(gl.TRIANGLES, 0, 3);
-    gl.flush();
 
+    const uniformLocations = {
+        matrix: gl.getUniformLocation(program, 'matrix'),
+    }
+
+
+    const matrix = glMatrix.mat4.create();
+    //console.log(matrix, "Identity Matrix");
+    glMatrix.mat4.translate( matrix, matrix, [-0.2, 0.5, 0.1]);
+    glMatrix.mat4.scale(matrix, matrix, [0.5, 0.5, 0.5]);
+    //console.log(matrix, "Translate Matrix");
+
+    function animate() {
+        requestAnimationFrame(animate);
+        glMatrix.mat4.rotate(matrix, matrix, Math.PI/4/100, [0, 0, 1]);
+        gl.uniformMatrix4fv(uniformLocations.matrix, false, matrix);
+        gl.drawArrays(gl.TRIANGLES, 0, 3);
+
+    }
+    animate();
 }
 
 export { _2DTriangle, vsGSGL, fsGSGL };

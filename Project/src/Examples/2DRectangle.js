@@ -71,7 +71,7 @@ function _2DRectangle(gl, canvas) {
     gl.vertexAttribPointer(colorlocation, 3, gl.FLOAT, false, 0, 0);
     // Use the program and draw the rectangle
     gl.useProgram(program);
-    gl.drawArrays(gl.LINES, 0, 4); // Use TRIANGLE_FAN to draw a rectangle
+    gl.drawArrays(gl.TRIANGLES, 0, 4); // Use TRIANGLE_FAN to draw a rectangle
     gl.flush();
 }
 

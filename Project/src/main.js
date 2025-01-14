@@ -2,8 +2,6 @@ import {_2DTriangle, vsGSGL, fsGSGL} from "./Examples/2DTriangle.js";
 import {_2DRectangle} from "./Examples/2DRectangle.js";
 
 
-
-
 function main() {
     const canvas = document.querySelector("#canvas");
     canvas.width = 400;
@@ -56,13 +54,11 @@ function main() {
     document.getElementById("sphere").addEventListener("click", drawSphere);
 
 }
-const matrix = new Vector4(1,0,0,1).transform([
-    1,0,0,0,
-    0,1,0,0,
-    0,0,1,0,
-    0,0,0,1
-    ]
-);
-console.log(matrix);
+
+// const matrix = glMatrix.mat4.create();
+// console.log(matrix, "Identity Matrix");
+// glMatrix.mat4.translate( matrix, matrix, [2, 5, 1]);
+// console.log(matrix, "Translate Matrix");
+
 document.addEventListener("DOMContentLoaded", main);
 main();
