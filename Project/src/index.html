@@ -1,19 +1,52 @@
-<!DOCTYPE <!DOCTYPE html>
-<html>
+<!DOCTYPE html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
-
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css"/>
 </head>
-<body onload ="main()" >
-    <h1>Assessment of OpenGL performance techniques</h1>
-    <p>Find the repository here! <a href = "https://github.com/jahz2323/Optimization_techniques_for_OpenGL">GitHub </a></p>
-    <canvas id="glcanvas" width="1000" height="1000"> </canvas>
-    <script src="functions/SingleDraw.js" defer> </script>
-    <script src="functions/10k_Vertices.js" defer> </script>
-    <script src="main.js" defer ></script>
+<body>
+<h1>Assessment of OpenGL performance techniques</h1>
+<div id="menu">
+    <h2>
+        <ol>
+            <h3> Examples </h3>
+            <li id="triangle">
+                2D Triangle
+            </li>
+            <li id="rectangle">
+                2D Rectangle
+            <li id="cube">
+                3D Cube
+            </li>
+            <li id="sphere">
+                3D Sphere
+            </li>
+        </ol>
+        <ol>
+            <h3> Optimisation techniques </h3>
+            <li>
+                Interleaving vs Non-interleaving
+            </li>
+        </ol>
+    </h2>
+</div>
+<p>Find the repository here! <a href="https://github.com/jahz2323/Optimization_techniques_for_OpenGL">GitHub </a></p>
+
+<div id="app">
+    <p id="Display"> Displaying: Null </p>
+    <div id="canvas-slider-container">
+        <canvas id="canvas" width="1000" height="1000"></canvas>
+        <div type="text/jsx" id="slider" ></div>
+    </div>
+</div>
+<script type="module">
+    import { Vector4 } from 'https://cdn.jsdelivr.net/npm/@math.gl/core@4.1.0/dist/esm/index.js';
+</script>
+
+<script type="module" src="./main.js"></script>
+
+<!--<script src="./main.js"></script>-->
 </body>
 </html>
