@@ -1,0 +1,8 @@
+body{
+    background-color: #252525;
+}
+#Canvas{
+    border: white 2px solid;
+    width: 100%;
+    height: 100%;
+}

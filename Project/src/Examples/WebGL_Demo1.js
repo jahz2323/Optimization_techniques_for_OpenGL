@@ -1,4 +1,14 @@
 
+function main(){
+    const canvas = document.querySelector("#glCanvas");
+    const gl = canvas.getContext("webgl");
+    if(gl === null){
+        alert("Unable to initialize WebGL. Your browser or machine may not support it.");
+        return;
+    }
+    _2DTriangle(gl, canvas);
+}
+
 const vsGSGL = `
     precision mediump float;
     
@@ -62,6 +72,7 @@ function _2DTriangle(gl, canvas) {
     const fragmentshader = gl.createShader(gl.FRAGMENT_SHADER);
     gl.shaderSource(fragmentshader, fsGSGL);
     gl.compileShader(fragmentshader);
+
     //create program
     const program = gl.createProgram();
     gl.attachShader(program, vertexshader);
@@ -86,11 +97,9 @@ function _2DTriangle(gl, canvas) {
     //gl.uniform4fv(colorLocation, [Math.random(), Math.random(), Math.random(), 1]);
     //requestAnimationFrame(drawScene);
 
-
-    gl.useProgram(program);
-
-    const uniformLocations = {
-        matrix: gl.getUniformLocation(program, 'matrix'),
+    const matrixLocation  = gl.getUniformLocation(program, 'matrix')
+    if(matrixLocation === null){
+        console.log("Matrix Location is null");
     }
 
 
@@ -102,12 +111,16 @@ function _2DTriangle(gl, canvas) {
 
     function animate() {
         requestAnimationFrame(animate);
+        gl.useProgram(program)
         glMatrix.mat4.rotate(matrix, matrix, Math.PI/4/100, [0, 0, 1]);
-        gl.uniformMatrix4fv(uniformLocations.matrix, false, matrix);
+        gl.uniformMatrix4fv(matrixLocation, false, matrix);
+        // Clear the screen and draw the triangle
+        gl.clear(gl.COLOR_BUFFER_BIT);
         gl.drawArrays(gl.TRIANGLES, 0, 3);
 
     }
     animate();
-}
 
-export { _2DTriangle, vsGSGL, fsGSGL };
+}
+document.addEventListener("DOMContentLoaded", main);
+main();

@@ -15,33 +15,28 @@ const fsGSGL = `
     uniform vec4 u_color;
     varying vec3 vColor;
     void main(void) {
-        gl_FragColor = vec4(vColor, 1);
+        gl_FragColor = vec4(0.0,1.0,0.0, 1); //green color 
     }
 `;
 
 function _2DRectangle(gl, canvas) {
-    const dim = 3;
+    gl.clear(gl.DEPTH_BUFFER_BIT | gl.COLOR_BUFFER_BIT);
+    const dim = 2;
     // Define the vertices for a rectangle
     const vertices = new Float32Array([
-        0.5, 0.5, 0.0, // Top-right
-        -0.5, 0.5, 0.0, // Top-left
-        -0.5, -0.5, 0.0, // Bottom-left
-        0.5, -0.5, 0.0  // Bottom-right
+        -0.5,  0.5,  // Top left
+        -0.5, -0.5,  // Bottom left
+        0.5,  0.5,  // Top right
+        -0.5, -0.5,  // Bottom left
+        0.5, -0.5,  // Bottom right
+        0.5,  0.5   // Top right
     ]);
-    const colorData = [
-        1,0,0,1, // red
-        0,1,0,1, //green
-        0,0,1,1 //blue
-    ]
+
 
     // Create a buffer for the vertex data
     const posbuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, posbuffer);
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
-
-    const colorbuffer = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, colorbuffer);
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(colorData), gl.STATIC_DRAW);
 
     // Create and compile the vertex shader
     const vertexshader = gl.createShader(gl.VERTEX_SHADER);
@@ -65,13 +60,9 @@ function _2DRectangle(gl, canvas) {
     gl.enableVertexAttribArray(positionlocation);
     gl.vertexAttribPointer(positionlocation, dim, gl.FLOAT, false, 0, 0);
 
-    const colorlocation = gl.getAttribLocation(program, "color");
-    gl.enableVertexAttribArray(colorlocation);
-    gl.bindBuffer(gl.ARRAY_BUFFER, colorbuffer);
-    gl.vertexAttribPointer(colorlocation, 3, gl.FLOAT, false, 0, 0);
     // Use the program and draw the rectangle
     gl.useProgram(program);
-    gl.drawArrays(gl.TRIANGLES, 0, 4); // Use TRIANGLE_FAN to draw a rectangle
+    gl.drawArrays(gl.TRIANGLES, 0, 6); // Use TRIANGLE_FAN to draw a rectangle
     gl.flush();
 }
 

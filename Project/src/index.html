@@ -7,44 +7,98 @@
     <link rel="stylesheet" type="text/css" media="screen" href="style.css"/>
 </head>
 <body>
-<h1>Assessment of OpenGL performance techniques</h1>
-<div id="menu">
-    <h2>
-        <ol>
-            <h3> Examples </h3>
-            <li id="triangle">
-                2D Triangle
-            </li>
-            <li id="rectangle">
-                2D Rectangle
-            <li id="cube">
-                3D Cube
-            </li>
-            <li id="sphere">
-                3D Sphere
-            </li>
-        </ol>
-        <ol>
-            <h3> Optimisation techniques </h3>
-            <li>
-                Interleaving vs Non-interleaving
-            </li>
-        </ol>
-    </h2>
-</div>
-<p>Find the repository here! <a href="https://github.com/jahz2323/Optimization_techniques_for_OpenGL">GitHub </a></p>
 
-<div id="app">
-    <p id="Display"> Displaying: Null </p>
-    <div id="canvas-slider-container">
-        <canvas id="canvas" width="1000" height="1000"></canvas>
-        <div type="text/jsx" id="slider" ></div>
+<h1>Assessment of OpenGL performance techniques</h1>
+<hr>
+<p>
+    For my final year project, I am currently working on a project that
+    aims to assess the performance of optimisation techniques for GPGPU programming using WebGPU.
+    The project will involve the use of WebGPU to survey optimisation techniques for ML/AI computations.
+    <br>
+</p>
+<div class="Gantt_Chart">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['gantt']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Task ID');
+            data.addColumn('string', 'Task Name');
+            data.addColumn('string', 'Resource');
+            data.addColumn('date', 'Start Date');
+            data.addColumn('date', 'End Date');
+            data.addColumn('number', 'Duration');
+            data.addColumn('number', 'Percent Complete');
+            data.addColumn('string', 'Dependencies');
+            data.addRows([
+                ['2025Winter', 'Winter 2025', 'WebGL fundamentals, TensorFlow.js',
+                    new Date(2025, 1, 16), new Date(2025, 3, 15), null, 100, null],
+                ['2025Spring', 'Spring 2025', 'WebGPU fundamentals',
+                    new Date(2025, 3, 16), new Date(2025, 5, 16), null, 100, null],
+                ['2025Summer', 'Summer 2025', 'Optimisation technqiues for surveying ML/AI computations',
+                    new Date(2025, 5, 16), new Date(2025, 8, 15), null, 100, null],
+            ]);
+
+            var options = {
+                height: 200,
+                gantt: {
+                    trackHeight: 30
+                }
+            };
+
+            var chart = new google.visualization.Gantt(document.getElementById('chart_div'));
+
+            chart.draw(data, options);
+        }
+    </script>
+    <div id="chart_div"></div>
+</div>
+
+
+
+<div class="WebGL">
+    <h2>WebGL</h2>
+    <p>
+        This section contains WebGL examples
+    </p>
+    <div class="dropdown">
+        <button class="dropbtn">Demos</button>
+        <div class="dropdown-content">
+            <a href="Pages/Triangles.html" target="_blank">Triangle Demos</a>
+            <a href="Pages/Rectangles.html" target="_blank">Rectangle Demos</a>
+            <a href="Pages/3DObjects.html" target="_blank">3D Demos</a>
+        </div>
     </div>
 </div>
-<script src="./libs/gl-matrix-min.js" defer></script>
-<script src="./libs/gl-matrix.js"></script>
-<script type="module" src="./main.js"></script>
 
-<!--<script src="./main.js"></script>-->
+<div class="WebGPU">
+    <h2>WebGPU</h2>
+    <p>
+        This section contains WebGPU examples
+    </p>
+    <div class="dropdown">
+        <button class="dropbtn">Demos</button>
+        <div class="dropdown-content">
+            <a href="#" style="text-decoration: line-through "> not decided </a>
+        </div>
+    </div>
+</div>
+
+<div class = "TensorFlow.js">
+    <h2>TensorFlow.js</h2>
+    <p>
+        This section contains TensorFlow.js examples
+    </p>
+    <div class="dropdown">
+        <button class="dropbtn">Demos</button>
+        <div class="dropdown-content">
+            <a href="#" style="text-decoration: line-through "> not decided </a>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
