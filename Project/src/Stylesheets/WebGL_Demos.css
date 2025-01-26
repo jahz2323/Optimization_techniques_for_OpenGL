@@ -1,6 +1,12 @@
 body{
     background-color: #252525;
 }
+body h1{
+    color: #FFFFFF;
+}
+#header{
+    color: #FFFFFF;
+}
 #Canvas{
     border: white 2px solid;
     width: 100%;
