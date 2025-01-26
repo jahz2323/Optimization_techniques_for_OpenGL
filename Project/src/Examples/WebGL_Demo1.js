@@ -193,7 +193,7 @@ function Demo(gl, canvas) {
         requestAnimationFrame(animate);
         gl.useProgram(program)
         glMatrix.mat4.rotate(matrix, matrix, Math.PI / 4 / 100, [0, 0, 1]);
-        glMatrix.mat4.rotate(matrix, matrix, Math.PI / 4 / 100, [1, 0, 0]);
+        glMatrix.mat4.rotate(matrix, matrix, Math.PI / 4 / 100, [0, 1, 0]);
         gl.uniformMatrix4fv(matrixLocation, false, matrix);
         gl.drawArrays(gl.TRIANGLES, 0, CubeData.length / 3);
 
