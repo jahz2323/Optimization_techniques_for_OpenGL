@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JavaScriptLibraryMappings">
+    <file url="PROJECT" libraries="{3a1717978fc68adaa7a878a2089db731, webgl-lessons-ui, webgl-utils}" />
+  </component>
+</project>

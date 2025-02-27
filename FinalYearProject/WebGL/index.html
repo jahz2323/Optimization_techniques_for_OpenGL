@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebGL Optimisations</title>
+    <link rel="stylesheet" type="text/css"  href="sheets/styles.css">
+    <script src="libs/jquery-3.7.1.min.js"></script>
+    <script src="libs/webgl-utils.js"></script>
+    <script src="libs/gl-matrix-min.js"></script>
+</head>
+<body>
+<div id="Content">
+    <h1>Optimisations for Graphics Computation</h1>
+    <div id="canvas-container">
+        <canvas id="glCanvas" width="1280" height="780"></canvas>
+    </div>
+    <div id="list-container">
+        <ul>
+            <li class="list-item" id="Interleaving-Data">Interleaving Data</li>
+            <li class="list-item" id="Degenerate-Triangles">Degenerate Triangles</li>
+            <li class="list-item"id="Instancing">Instancing</li>
+            <li class="list-item" id="Batch-size">Batch size</li>
+        </ul>
+        <input type="button" id="reset" value="Reset">
+    </div>
+</div>
+<!--<script src="main.js" type="module"></script>-->
+<script src="scripts/degenerate-triangles.js " type="module"></script>
+<script src="main.js" type="module"></script>
+</body>
+</html>
