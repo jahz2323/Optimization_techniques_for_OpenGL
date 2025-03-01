@@ -44,8 +44,10 @@ void main(){
 }`;
 
 
-let meshwidth = 500;
-let meshheight = 500;
+let meshwidth = canvas.width / 10;
+let meshheight = canvas.height / 10;
+
+
 let DemoSwitch = false; //FALSE is non-degenerate triangles, TRUE is degenerate triangles
 
 function drawTriangle(triangle, positionBuffer, colorBuffer, color_data) {
@@ -105,86 +107,94 @@ function createMesh(i=0,j=0, positionBuffer, colorBuffer) {
             v0 -v3 and v4 - v7
             introduce degenerate triangles between v3 and v4
          */
-        let color_data = [
-            1, 0, 0, 1, // Red
-            0, 0, 0, 1,
-            0, 0, 0, 1,
+        // create for 40 squares 40 rows
+        let color_data = [];
+        let vertice_data = [];
+        for(let i = 0; i < meshheight; i++){
+            for(let j = 0; j < meshwidth; j++){
+                //push two strip example
+                color_data.push(
+                    1, 0, 0, 1, // Red
+                    0, 0, 0, 1,
+                    0, 0, 0, 1,
 
-            0, 0, 0, 1,
-            0, 0, 0, 1,
-            0, 0, 1, 1,
+                    0, 0, 0, 1,
+                    0, 0, 0, 1,
+                    0, 0, 1, 1,
 
-            0, 0, 0, 1,
-            0, 0, 0, 1,
-            0, 0, 0, 1,
+                    0, 0, 0, 1,
+                    0, 0, 0, 1,
+                    0, 0, 0, 1,
 
-            0, 0, 0, 1,
-            0, 0, 0, 1,
-            0, 0, 0, 1,
+                    0, 0, 0, 1,
+                    0, 0, 0, 1,
+                    0, 0, 0, 1,
 
-            0, 0, 0, 1,
-            0, 0, 0, 1,
-            0, 0, 0, 1,
+                    0, 0, 0, 1,
+                    0, 0, 0, 1,
+                    0, 0, 0, 1,
 
-            0, 0, 0, 1,
-            0, 0, 0, 1,
-            0, 0, 0, 1,
+                    0, 0, 0, 1,
+                    0, 0, 0, 1,
+                    0, 0, 0, 1,
 
-            1, 0, 0, 1,
-            0, 0, 0, 1,
-            0, 0, 0, 1,
+                    1, 0, 0, 1,
+                    0, 0, 0, 1,
+                    0, 0, 0, 1,
 
-            0, 0, 0, 1,
-            0, 0, 0, 1,
-            0, 0, 1, 1,
-        ];
-        let vertice_data = [
-            // First triangle
-            520, 20, // v0
-            520, 30, // v1
-            530, 30, // v2
+                    0, 0, 0, 1,
+                    0, 0, 0, 1,
+                    0, 0, 1, 1,
+                );
+                vertice_data.push(
+                    // First triangle
+                    520 + (j * 10), 20 + (i * 10), // v0
+                    520 + (j * 10), 30 + (i * 10), // v1
+                    530 + (j * 10), 30 + (i * 10), // v2
 
-            // Second triangle
-            530, 30, // v2
-            520, 20, // v0
-            530, 20, // v3
+                    // Second triangle
+                    530 + (j * 10), 30 + (i * 10), // v2
+                    520 + (j * 10), 20 + (i * 10), // v0
+                    530 + (j * 10), 20 + (i * 10), // v3
 
-            // Degenerate triangle (stitch)
-            530, 30, // v2
-            530, 20, // v3
-            530, 20, // v3 (repeated)
+                    // Degenerate triangle (stitch)
+                    530 + (j * 10), 30 + (i * 10), // v2
+                    530 + (j * 10), 20 + (i * 10), // v3
+                    530 + (j * 10), 20 + (i * 10), // v3 (repeated)
 
-            // Degenerate triangle (stitch)
-            530, 20, // v3
-            530, 20, // v3
-            540, 30, // v4
+                    // Degenerate triangle (stitch)
+                    530 + (j * 10), 20 + (i * 10), // v3
+                    530 + (j * 10), 20 + (i * 10), // v3
+                    540 + (j * 10), 30 + (i * 10), // v4
 
-            530, 20, // v3
-            540, 30, // v4
-            540, 30, // v4
+                    530 + (j * 10), 20 + (i * 10), // v3
+                    540 + (j * 10), 30 + (i * 10), // v4
+                    540 + (j * 10), 30 + (i * 10), // v4
 
-            // Degenerate triangle (stitch)
-            540, 30, // v4
-            540, 30, // v4
-            540, 20, // v5 (repeated)
+                    // Degenerate triangle (stitch)
+                    540 + (j * 10), 30 + (i * 10), // v4
+                    540 + (j * 10), 30 + (i * 10), // v4
+                    540 + (j * 10), 20 + (i * 10), // v5 (repeated)
 
-            // Fourth triangle
-            540, 30, // v4
-            540, 20, // v5 (repeated)
-            550, 30, // v6
+                    // Fourth triangle
+                    540 + (j * 10), 30 + (i * 10), // v4
+                    540 + (j * 10), 20 + (i * 10), // v5 (repeated)
+                    550 + (j * 10), 30 + (i * 10), // v6
 
-            // Fifth triangle
-            540, 20, // v5
-            550, 30, // v6
-            550, 20, // v7
-        ];
+                    // Fifth triangle
+                    540 + (j * 10), 20 + (i * 10), // v5
+                    550 + (j * 10), 30 + (i * 10), // v6
+                    550 + (j * 10), 20 + (i * 10), // v7
+                );
+            }
+        }
+
         gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
         gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertice_data), gl.STATIC_DRAW);
 
         gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
         gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(color_data), gl.STATIC_DRAW);
         gl.drawArrays(gl.TRIANGLES, 0, vertice_data.length / 2);
-
     }
    
 }
@@ -221,30 +231,32 @@ function createBuffers(program, positionAttributeLocation, colorAttributeLocatio
 
 
     console.log("Drawing non-degenerate triangles");
-    console.log(window.performance.now());
+    let startTime = window.performance.now();
+
     //generate non-degenerate Triangle Strip
 
     for (let i = 0; i <= meshheight; i++) {
-        if (i >= 40) {
+        if (i >= meshheight) {
             break;
         }
         for (let j = 0; j <= meshwidth; j++) {
-            if (j >= 40) {
+            if (j >= meshwidth) {
                 break;
             }
             createMesh(i, j, positionBuffer,colorBuffer);
         }
+
     }
     console.log("Finished drawing non-degenerate triangles");
-    console.log(window.performance.now());
+    console.log("Time taken:", window.performance.now() - startTime);
 
     //generate degenerate Triangle Strip
     console.log("Drawing degenerate triangles");
-    console.log(window.performance.now());
+    startTime = window.performance.now();
     DemoSwitch = true;
     createMesh(0, 0, positionBuffer,colorBuffer);
     console.log("Finished drawing degenerate triangles");
-    console.log(window.performance.now());
+    console.log("Time taken:", window.performance.now() - startTime);
 }
 
 let degenerateTrianglesDemo = () => {
@@ -252,10 +264,13 @@ let degenerateTrianglesDemo = () => {
     //setup shaders
     //create buffers
     //draw
+    DemoSwitch = false;
     if (!gl) {
         console.log("WebGL not supported, falling back on experimental-webgl");
         gl = canvas.getContext("experimental-webgl");
     }
+    console.log("Mesh width:", meshwidth);
+    console.log("Mesh height:", meshheight);
     let program = webglUtils.createProgramFromSources(gl, [vertexShaderSource, fragmentShaderSource]);
     let positionAttributeLocation = gl.getAttribLocation(program, "a_position");
     let colorAttributeLocation = gl.getAttribLocation(program, "a_color");

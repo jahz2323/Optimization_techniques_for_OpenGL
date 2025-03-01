@@ -45,5 +45,5 @@ li:hover{
     display: flex;
     justify-content: center;
     align-items: center;
-    border: white 1px solid;
+    border: #ff0000 1px solid;
 }

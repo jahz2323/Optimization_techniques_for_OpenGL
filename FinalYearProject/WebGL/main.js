@@ -1,5 +1,6 @@
 "use strict";
 import { degenerateTrianglesDemo } from "./scripts/degenerate-triangles.js";
+import { interleaving_demo } from "./scripts/interleaving-data.js";
 const canvas = document.getElementById("glCanvas");
 let gl = canvas.getContext("webgl");
 
@@ -14,15 +15,19 @@ function main() {
     console.log("WebGL initialized");
     //get rendering demos
     let DegenerateTriangles = document.getElementById("Degenerate-Triangles");
-
+    let Interleaving3DCubes = document.getElementById("Interleaving-Data");
     //get reset button
     let Reset = document.getElementById("reset");
-
 
     $(DegenerateTriangles).click(function () {
         console.log("Starting Degenerate Triangles Demo");
         degenerateTrianglesDemo();
     });
+    $(Interleaving3DCubes).click(function () {
+        console.log("Starting Interleaving 3D Cubes Demo");
+        interleaving_demo();
+    });
+
     //reset canvas
     $(Reset).click(function () {
         console.log("Resetting canvas");

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="PROJECT" libraries="{webgl-lessons-ui, webgl-utils}" />
+    <file url="file://$PROJECT_DIR$/FinalYearProject/WebGL_VueJs" libraries="{Optimization_techniques_for_OpenGL/FinalYearProject/WebGL_VueJs/node_modules}" />
+    <file url="PROJECT" libraries="{@types/webgl2, @types/webgl2-compute, Optimization_techniques_for_OpenGL/FinalYearProject/WebGL_VueJs/node_modules, webgl-lessons-ui, webgl-utils}" />
+    <includedPredefinedLibrary name="HTTP Pre-Request and Response Handler" />
     <includedPredefinedLibrary name="Node.js Core" />
   </component>
 </project>
