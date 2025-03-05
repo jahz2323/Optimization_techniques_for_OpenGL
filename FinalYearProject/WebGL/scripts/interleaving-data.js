@@ -12,7 +12,6 @@ void main() {
     vec4 transformedPosition = u_matrix * a_position;
     gl_Position = transformedPosition;
     vColor = a_color;
-    
 }
 `;
 
@@ -122,7 +121,7 @@ function setupAttributes(Locations, vertexBuffer) {
     gl.enableVertexAttribArray(colorAttributeLocation);
     gl.vertexAttribPointer(colorAttributeLocation, 4, gl.UNSIGNED_BYTE, true, 16, 12);
 
-    let aspect = gl.canvas.clientWidth / gl.canvas.clientHeight;
+    let aspect = gl.canvas.width / gl.canvas.height;
     let perspectiveMatrix = createPerspectiveMatrix(Math.PI / 4, aspect, 1, 2000);
     console.log("Perspective matrix:", perspectiveMatrix);
     gl.uniformMatrix4fv(Locations.matrixLocation, false, perspectiveMatrix);
@@ -133,7 +132,6 @@ function setupAttributes(Locations, vertexBuffer) {
     }
     console.log("Number of vertices:", vertexBuffer.numItems);
 
-    console.log("Drawing interleaved data");
     gl.drawArrays(gl.TRIANGLES, 0, vertexBuffer.numItems);
 }
 
@@ -198,15 +196,12 @@ function setupShaders() {
     return { program, positionAttributeLocation, colorAttributeLocation, matrixLocation };
 }
 
-function createPerspectiveMatrix(fov, aspect, near, far) {
-    let f = 1.0 / Math.tan(fov / 2);
-    let rangeInv = 1 / (near - far);
-
+function createPerspectiveMatrix(width, height, depth) {
     return [
-        f / aspect, 0, 0, 0,
-        0, f, 0, 0,
-        0, 0, (near + far) * rangeInv, -1,
-        0, 0, near * far * rangeInv * 2, 0
+        2 / width, 0, 0, 0,
+        0, -2 / height, 0, 0,
+        0, 0, 2 / depth, 0,
+        -1, 1, 0, 1,
     ];
 }
 

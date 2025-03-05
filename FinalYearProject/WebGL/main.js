@@ -1,10 +1,9 @@
 "use strict";
 import { degenerateTrianglesDemo } from "./scripts/degenerate-triangles.js";
 import { interleaving_demo } from "./scripts/interleaving-data.js";
+import {CameraDemo} from "./scripts/Camera.js";
 const canvas = document.getElementById("glCanvas");
 let gl = canvas.getContext("webgl");
-
-
 
 function main() {
     //get gl context
@@ -16,6 +15,8 @@ function main() {
     //get rendering demos
     let DegenerateTriangles = document.getElementById("Degenerate-Triangles");
     let Interleaving3DCubes = document.getElementById("Interleaving-Data");
+    let Camera = document.getElementById("Camera");
+
     //get reset button
     let Reset = document.getElementById("reset");
 
@@ -27,6 +28,10 @@ function main() {
         console.log("Starting Interleaving 3D Cubes Demo");
         interleaving_demo();
     });
+    $(Camera).click(function () {
+         console.log("Starting Camera Demo");
+         CameraDemo();
+    })
 
     //reset canvas
     $(Reset).click(function () {

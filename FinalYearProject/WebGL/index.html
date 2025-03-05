@@ -7,12 +7,14 @@
     <script src="libs/jquery-3.7.1.min.js"></script>
     <script src="libs/webgl-utils.js"></script>
     <script src="libs/gl-matrix-min.js"></script>
+    <script src="../WebGL/WebGLDeveloperTools/src/debug/webgl-debug.js"></script>
+    <script src="scripts/FetchShaders.js" type="module"></script>
 </head>
 <body>
 <div id="Content">
     <h1>Optimisations for Graphics Computation</h1>
     <div id="canvas-container">
-        <canvas id="glCanvas" width="1080" height="1920"></canvas>
+        <canvas id="glCanvas" width="1280" height="1920"></canvas>
     </div>
     <div id="list-container">
         <ul>
@@ -20,13 +22,31 @@
             <li class="list-item" id="Degenerate-Triangles">Degenerate Triangles</li>
             <li class="list-item"id="Instancing">Instancing</li>
             <li class="list-item" id="Batch-size">Batch size</li>
+            <li class="list-item" id="Camera">Camera</li>
         </ul>
         <input type="button" id="reset" value="Reset">
     </div>
+    <div id="uiContainer">
+        <div id="ui">
+            <div id="x"></div>
+            <div id="y"></div>
+            <div id="z"></div>
+            <div id="angleX"></div>
+            <div id="angleY"></div>
+            <div id="angleZ"></div>
+            <div id="scaleX"></div>
+            <div id="scaleY"></div>
+            <div id="scaleZ"></div>
+        </div>
+    </div>
 </div>
+
 <!--<script src="main.js" type="module"></script>-->
+<script src="https://webglfundamentals.org/webgl/resources/webgl-utils.js"></script>
+<script src="https://webglfundamentals.org/webgl/resources/webgl-lessons-ui.js"></script>
 <script src="scripts/degenerate-triangles.js " type="module"></script>
 <script src="scripts/interleaving-data.js" type="module"></script>
+<script src="scripts/Camera.js" type="module"></script>
 <script src="main.js" type="module"></script>
 </body>
 </html>
